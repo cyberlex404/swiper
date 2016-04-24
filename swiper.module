@@ -5,27 +5,6 @@
 */
 
 /**
- * Implements hook_library().
- */
-/*
-function swiper_library() {
-    $libraries['swiper'] = array(
-        'title' => 'Library Swiper',
-        'website' => 'http://idangero.us/swiper/',
-        'version' => '3.3.1',
-        'js' => array(
-            drupal_get_path('module', 'my_module') . '/library-1.js' => array(),
-        ),
-        'css' => array(
-            drupal_get_path('module', 'my_module') . '/library-2.css' => array(
-                'type' => 'file',
-                'media' => 'screen',
-            ),
-        ),
-    );
-}
-*/
-/**
  * Implements hook_libraries_info().
  */
 function swiper_libraries_info() {
@@ -49,19 +28,6 @@ function swiper_libraries_info() {
     );
 
     return $libraries;
-}
-
-/**
- * Implements hook_init().
- */
-function swiper_init() {
-    $name = 'swiper';
-    // Try to load the library and check if that worked.
-    if (($library = libraries_load($name)) && !empty($library['loaded'])) {
-        dpm($library);
-        // Do something with the library here.
-    }
-
 }
 
 /**
