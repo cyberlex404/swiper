@@ -41,7 +41,6 @@ function swiper_requirements($phase) {
         $library = libraries_detect('swiper');
 
         if (empty($library['installed'])) {
-            // Сообщение о том, что библиотека не установлена
             $requirements['swiper_plugin'] = array(
                 'title' => $t('Swiper library'),
                 'value' => $t('At least @a', array('@a' => '3.3.1')),
@@ -59,7 +58,6 @@ function swiper_requirements($phase) {
             );
         }
         elseif (version_compare($library['version'], '3.3.0', '>=')) {
-            // Библиотека установлена и ее версия является актуальной.
             $requirements['swiper_plugin'] = array(
                 'title' => $t('Swiper library'),
                 'severity' => REQUIREMENT_OK,
@@ -67,7 +65,6 @@ function swiper_requirements($phase) {
             );
         }
         else {
-            // Библиотека установлена, однако требует обновления версии.
             $requirements['swiper_plugin'] = array(
                 'title' => $t('Swiper library'),
                 'value' => $t('At least @a', array('@a' => '3.3.0')),
