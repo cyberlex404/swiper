@@ -1,0 +1,52 @@
+<?php
+/**
+* @file
+* A description of what your module does.
+*/
+
+/**
+ * Implements hook_library().
+ */
+/*
+function swiper_library() {
+    $libraries['swiper'] = array(
+        'title' => 'Library Swiper',
+        'website' => 'http://idangero.us/swiper/',
+        'version' => '3.3.1',
+        'js' => array(
+            drupal_get_path('module', 'my_module') . '/library-1.js' => array(),
+        ),
+        'css' => array(
+            drupal_get_path('module', 'my_module') . '/library-2.css' => array(
+                'type' => 'file',
+                'media' => 'screen',
+            ),
+        ),
+    );
+}
+*/
+/**
+ * Implements hook_libraries_info().
+ */
+function swiper_libraries_info() {
+    $libraries['swiper'] = array(
+        'name' => 'Swiper',
+        'vendor url' => 'http://idangero.us/swiper/',
+        'download url' => 'https://github.com/nolimits4web/Swiper/archive/v3.3.1.zip',
+        'version arguments' => array(
+            'file' => 'swiper.js',
+            'pattern' => '/Swiper (\d+\.+\d+\.+\d)/',
+            'lines' => 2,
+        ),
+        'files' => array(
+            'js' => array(
+                'swiper.js',
+            ),
+            'css' => array(
+                'swiper.css',
+            ),
+        ),
+    );
+
+    return $libraries;
+}
