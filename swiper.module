@@ -50,3 +50,74 @@ function swiper_libraries_info() {
 
     return $libraries;
 }
+
+/**
+ * Implements hook_init().
+ */
+function swiper_init() {
+    $name = 'swiper';
+    // Try to load the library and check if that worked.
+    if (($library = libraries_load($name)) && !empty($library['loaded'])) {
+        dpm($library);
+        // Do something with the library here.
+    }
+
+}
+
+/**
+ * Implements hook_requirements().
+ */
+function swiper_requirements($phase) {
+    $requirements = array();
+
+    if ($phase == 'runtime') {
+        $t = get_t();
+        $library = libraries_detect('swiper');
+
+        if (empty($library['installed'])) {
+            // Сообщение о том, что библиотека не установлена
+            $requirements['swiper_plugin'] = array(
+                'title' => $t('Swiper library'),
+                'value' => $t('At least @a', array('@a' => '3.3.1')),
+                'severity' => REQUIREMENT_ERROR,
+                'description' =>
+                    $t('You need to download the !swiper, extract @js_file and @css_file files from the archive and
+               place them to the root of "swiper" directory in the %path directory on your server.',
+                        array(
+                            '!swiper' => l($t('Swiper library'), $library['download url']),
+                            '%path' => 'sites/all/libraries',
+                            '@js_file' => 'swiper.js',
+                            '@css_file' => 'swiper.css',
+                        )
+                    ),
+            );
+        }
+        elseif (version_compare($library['version'], '3.3.0', '>=')) {
+            // Библиотека установлена и ее версия является актуальной.
+            $requirements['swiper_plugin'] = array(
+                'title' => $t('Swiper library'),
+                'severity' => REQUIREMENT_OK,
+                'value' => $library['version'],
+            );
+        }
+        else {
+            // Библиотека установлена, однако требует обновления версии.
+            $requirements['swiper_plugin'] = array(
+                'title' => $t('Swiper library'),
+                'value' => $t('At least @a', array('@a' => '3.3.0')),
+                'severity' => REQUIREMENT_ERROR,
+                'description' =>
+                    $t('You need to download a later version of the !swiper and replace the old version
+                located in the %path directory on your server.',
+                        array(
+                            '!swiper' => l($t('Swiper library'), $library['download url']),
+                            '%path' => $library['library path']
+                        )
+                    ),
+            );
+        }
+    }
+
+    return $requirements;
+}
+
