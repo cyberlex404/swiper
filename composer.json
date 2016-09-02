@@ -1,0 +1,14 @@
+{
+  "name": "drupal/swiper",
+  "type": "drupal-module",
+  "description": "Swiper slider libraries and API",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/swiper",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/swiper",
+    "source": "http://cgit.drupalcode.org/swiper"
+  },
+  "require": { }
+}

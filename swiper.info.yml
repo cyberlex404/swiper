@@ -1,0 +1,5 @@
+name: Swiper
+type: module
+description: Swiper slider libraries and API
+core: 8.x
+package: Libraries
