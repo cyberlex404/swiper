@@ -1,0 +1,17 @@
+# Swiper slide routing definition
+entity.slide.canonical:
+  route_name: entity.slide.canonical
+  base_route: entity.slide.canonical
+  title: 'View'
+
+entity.slide.edit_form:
+  route_name: entity.slide.edit_form
+  base_route: entity.slide.canonical
+  title: Edit
+
+entity.slide.delete_form:
+  route_name:  entity.slide.delete_form
+  base_route:  entity.slide.canonical
+  title: Delete
+  weight: 10
+

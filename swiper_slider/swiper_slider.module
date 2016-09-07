@@ -1,0 +1,58 @@
+<?php
+
+/**
+ * @file
+ * Contains swiper_slider.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function swiper_slider_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the swiper_slider module.
+    case 'help.page.swiper_slider':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Swiper Entity slider') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function swiper_slider_theme() {
+  $theme = [];
+  $theme['slide'] = array(
+    'render element' => 'elements',
+    'file' => 'slide.page.inc',
+    'template' => 'slide',
+  );
+  $theme['slide_content_add_list'] = [
+    'render element' => 'content',
+    'variables' => ['content' => NULL],
+    'file' => 'slide.page.inc',
+  ];
+  return $theme;
+}
+
+/**
+* Implements hook_theme_suggestions_HOOK().
+*/
+function swiper_slider_theme_suggestions_slide(array $variables) {
+  $suggestions = array();
+  $entity = $variables['elements']['#slide'];
+  $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
+
+  $suggestions[] = 'slide__' . $sanitized_view_mode;
+  $suggestions[] = 'slide__' . $entity->bundle();
+  $suggestions[] = 'slide__' . $entity->bundle() . '__' . $sanitized_view_mode;
+  $suggestions[] = 'slide__' . $entity->id();
+  $suggestions[] = 'slide__' . $entity->id() . '__' . $sanitized_view_mode;
+  return $suggestions;
+}

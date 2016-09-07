@@ -1,0 +1,16 @@
+# Swiper slide menu items definition
+entity.slide.collection:
+  title: 'Swiper slide list'
+  route_name: entity.slide.collection
+  description: 'List Swiper slide entities'
+  parent: system.admin_structure
+  weight: 100
+
+# Slider menu items definition
+entity.slider.collection:
+  title: 'Slider'
+  route_name: entity.slider.collection
+  description: 'List Slider (bundles)'
+  parent: system.admin_structure
+  weight: 99
+

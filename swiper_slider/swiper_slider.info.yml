@@ -1,0 +1,7 @@
+name: Swiper entity slider
+type: module
+description: Swiper Entity slider
+core: 8.x
+package: Swiper
+dependencies:
+  - swiper

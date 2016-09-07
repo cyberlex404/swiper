@@ -1,0 +1,22 @@
+add swiper slide entities:
+  title: 'Create new Swiper slide entities'
+
+administer swiper slide entities:
+  title: 'Administer Swiper slide entities'
+  description: 'Allow to access the administration form to configure Swiper slide entities.'
+  restrict access: true
+
+delete swiper slide entities:
+  title: 'Delete Swiper slide entities'
+
+edit swiper slide entities:
+  title: 'Edit Swiper slide entities'
+
+access swiper slide overview:
+  title: 'Access the Swiper slide overview page'
+
+view published swiper slide entities:
+  title: 'View published Swiper slide entities'
+
+view unpublished swiper slide entities:
+  title: 'View unpublished Swiper slide entities'
